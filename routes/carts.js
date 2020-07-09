@@ -2,7 +2,7 @@
 
 var Cart = require('../models/cart');
 const meme = require('../models/meme');
-
+const { delete: _delete } = require("../routes");
 
 
 function auth (req, res, next) {
@@ -16,9 +16,9 @@ function auth (req, res, next) {
 
 
 module.exports = router => {
-  router.get('/add-to-cart/:id', function(req, res, next){
+  router.get('/add-to-cart/:id',   function(req, res, next){
     var productId = req.params.id;
-    var cart = new Cart(req.session.cart ? req.session.cart : {});     
+    var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});     
     meme.findById(productId, function(err, meme){
         if(err){
           req.flash('Error', 'Meme was not added to the cart');
@@ -32,7 +32,18 @@ module.exports = router => {
     })
 });
 
-router.get('/cart', function(req, res, next){
+ router.get('/deleteItem/:id',  function(req, res, next){
+  var productId = req.params.id;
+  var cart = new Cart(req.session.cart ? req.session.cart : {});
+
+  cart.deleteItem(productId);
+  req.session.cart = cart;
+  req.flash('success', 'Meme Was Deleted Successfully');
+  res.redirect('/cart/')
+ });
+
+
+router.get('/cart',  function(req, res, next){
     if(!req.session.cart){
       return res.render('cart/cart', {products: null});
     }

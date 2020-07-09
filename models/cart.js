@@ -1,3 +1,6 @@
+const { remove } = require("./meme");
+
+
 module.exports = function Cart(oldCart){
     this.items = oldCart.items || {};
     this.totalQty = oldCart.totalQty || 0; 
@@ -13,7 +16,12 @@ module.exports = function Cart(oldCart){
         this.totalQty++;
         this.totalPrice += storedItem.item.price;
     }
-
+    this.deleteItem = function(id){
+      
+        this.totalQty -= this.items[id].qty;
+        this.totalPrice -= this.items[id].price;
+        delete this.items[id];
+    }
     this.generateArray = function(){
         var arr = [];
         for (var id in this.items){

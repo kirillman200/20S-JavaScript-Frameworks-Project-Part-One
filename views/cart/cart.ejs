@@ -1,7 +1,5 @@
 <%- include ('../partials/header') %>
 <% if (products != null) { %>
-
-
 <div class="container">
   <div class="container text-white py-5 text-center">
     <h1 class="display-4"> Shopping cart</h1>
@@ -41,7 +39,7 @@
             </th>
             <td class="border-0 align-middle"><strong><%= product.item.price %>$</strong></td>
             <td class="border-0 align-middle"><strong><%= product.qty %></strong></td>
-            <td class="border-0 align-middle"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a></td>
+            <td class="border-0 align-middle"><a href="/deleteItem/<%= product.item._id %> " class="text-dark"><i class="fa fa-trash"></i></a></td>
           </tr>
         </tbody>
     </div>
