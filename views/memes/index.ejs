@@ -9,6 +9,7 @@
   <div class="container text-white py-5 text-center">
     <h1 class="display-4"> Memes</h1>
     <p class="lead mb-0">The Application is not fully done and probably done with a lot of errors, sorry about that</p>
+    <p class="lead mb-0">Here you can choose any of the products I have and add it to the cart. Unfortunately I did not figure out the way to display for different users cart for </p>
   </div>
   <div class="row">
 
@@ -16,7 +17,7 @@
 
     <div class=" col-md-4 col-sm-3 col-xl-4">
       <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="<%- meme.ImageLink %>  " alt="Card image cap">
+        <img class="card-img-top" style= "height: 15rem; " src="<%- meme.ImageLink %> " alt="Card image cap" >
         <div class="card-body">
           <% if (typeof meme.user !== 'undefined') { %>
           <small>~ <%= meme.user.fullname %></small>
@@ -27,14 +28,11 @@
           <p class="card-text"> Funny Level: <%- meme.LevelOfFunny %></p>
           <p class="card-text"><%= meme.price %>$</p>
           <a href="/add-to-cart/<%= meme.id %> " class="btn btn-primary">Add to cart</a>
-
-          <!-- end card body -->
+          
         </div>
-        <!-- end card -->
       </div>
-      <!-- end col -->
+      <hr style="visibility: hidden;">
     </div>
-    <!-- end row -->
 
 
 
