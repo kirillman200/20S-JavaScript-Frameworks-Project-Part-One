@@ -1,0 +1,37 @@
+<!--
+  Step 1: The form must be sharable between the new and edit views.
+-->
+<form action="<%= (typeof actionPath === 'undefined') ? '/memes' : actionPath %>", method="POST">
+  <% if (typeof actionPath !== 'undefined') { %>
+    <input type="hidden" name="id" value="<%= formData.id %>">
+  <% } %>
+
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" name="title" class="form-control" value="<%= formData.title %>">
+  </div>
+
+  <div class="form-group">
+    <label for="Description">Description</label>
+    <textarea name="Description" class="form-control "><%= formData.Description %></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="ImageLink">Image Link</label>
+    <textarea name="ImageLink" class="form-control "><%= formData.ImageLink %></textarea>
+  </div>
+  
+
+  <div class="form-group">
+    <label for="LevelOfFunny">Level Of Funny</label>
+    <textarea name="LevelOfFunny" class="form-control "><%= formData.LevelOfFunny %></textarea>
+  </div>
+  
+  <div class="form-group">
+    <label for="price">Price</label>
+    <textarea name="price" class="form-price "><%= formData.price %></textarea>
+  </div>
+  <div class="form-group">
+    <button class="btn btn-dark">Submit</button>
+  </div>
+</form>

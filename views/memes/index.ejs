@@ -1,0 +1,49 @@
+<!--
+  Step 1: This is your descretion how you would like to display data,
+  but you must list all the documents in your resource collection.
+-->
+
+<%- include ('../partials/header') %>
+
+<div class="container">
+  <div class="container text-white py-5 text-center">
+    <h1 class="display-4"> Memes</h1>
+
+  </div>
+  <div class="row">
+    
+    <% for (let meme of memes) { %>
+     
+        <div class=" col-md-4 col-sm-3 col-xl-4">
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="<%- meme.ImageLink %>  " alt="Card image cap">
+            <div class="card-body">
+              <% if (typeof meme.user !== 'undefined') { %>
+                <small>~ <%= meme.user.fullname %></small>
+              <% } %>
+              <h5 class="card-title"><%= meme.title %></h5>
+              
+              <p class="card-text"> Description: <%- meme.Description %></p>
+              <p class="card-text"> Funny Level:  <%- meme.LevelOfFunny %></p>
+              <p class="card-text"><%= meme.price %>$</p>
+              <a href="/add-to-cart/<%= meme.id %> " class="btn btn-primary">Add to cart</a>
+             
+              <!-- end card body -->
+            </div>
+             <!-- end card -->
+          </div>
+             <!-- end col -->
+        </div>
+         <!-- end row -->
+      
+    
+        
+      
+    <% } %>
+  
+  </div>     
+</div>
+   
+
+
+<%- include ('../partials/footer') %>

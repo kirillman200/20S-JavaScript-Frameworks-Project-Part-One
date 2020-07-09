@@ -1,0 +1,33 @@
+<!--
+  Step 1: This is your descretion how you would like to display data,
+  but you must list display only one document based on the passed ID.
+-->
+
+<%- include ('../partials/header') %>
+
+<div class="container my-5">
+  <header>
+    <h1>
+      <%= meme.title %>
+      <a href="/memes/<%= meme.id %>/edit">
+        <i class="fa fa-edit"></i>
+      </a>
+    </h1>
+    <br>
+    <small>
+      <%= (meme.updatedAt.toLocaleString("en-CA")) %>
+    </small>
+    <p><strong>By: <%= meme.user.fullname %> </strong></p>
+  </header>
+  <hr>
+  <img class="card-img-top"  style="width: 18rem;" src="<%- meme.ImageLink %>  " alt="Card image cap">
+  <div class="Description">
+   Description:  <%- meme.Description %>
+  </div>
+
+  <div class="LevelOfFunny">
+   Level Of Funny <%- meme.LevelOfFunny %>
+  </div>
+</div>
+
+<%- include ('../partials/footer') %>
